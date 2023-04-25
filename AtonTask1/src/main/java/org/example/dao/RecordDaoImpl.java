@@ -46,15 +46,20 @@ public class RecordDaoImpl implements RecordDao<Record>  {
     public void updateRecord(Record record) throws RecordNotFoundException, RecordAlreadyExistsException {
         deleteRecord(record);
         addRecord(record);
+//        Record db_record = getRecordByAccount(record.getAccount());
+//        db_record.setName(record.getName());
+//        db_record.setValue(record.getValue());
+        // delete from maps and add
     }
 
     public void deleteRecord(Record record) throws RecordNotFoundException {
         if (accountsMap.get(record.getAccount()) == null)
             throw new RecordNotFoundException("Account not found.");
         else {
-            accountsMap.remove(record);
-            namesMap.get(record.getName()).remove(record);
-            valuesMap.get(record.getValue()).remove(record);
+            Record old_record = getRecordByAccount(record.getAccount());
+            accountsMap.remove(old_record.getAccount());
+            namesMap.get(old_record.getName()).remove(old_record);
+            valuesMap.get(old_record.getValue()).remove(old_record);
         }
     }
 
