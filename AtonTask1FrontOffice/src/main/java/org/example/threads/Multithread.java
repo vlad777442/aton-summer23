@@ -18,7 +18,7 @@ public class Multithread extends Thread {
                 if (this.name.equals(sitcomLines.getLine()[0])) {
                     System.out.println(this.name + ": " + sitcomLines.getLine()[1]);
 
-                    sitcomLines.increaseIndex();
+                    sitcomLines.incrementIndex();
                     sitcomLines.notifyAll();
                 }
                 try {

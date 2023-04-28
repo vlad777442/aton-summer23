@@ -27,7 +27,7 @@ public class SitcomLines {
         return this.lines[index];
     }
 
-    public void increaseIndex() {
+    public synchronized void incrementIndex() {
         this.index++;
     }
 
